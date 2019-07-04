@@ -1,0 +1,50 @@
+#include <Morse.h>
+
+ 
+Morse morse(8);
+
+int letter[28][4]={
+// A to I
+{1,2,0,0},{2,1,1,1},{2,1,2,1},{2,1,1,0},{1,0,0,0},{1,1,2,1},{2,2,1,0},{1,1,1,1},{1,1,0,0},
+// J to R 
+{1,2,2,2},{2,1,2,0},{1,2,1,1},{2,2,0,0},{2,1,0,0},{2,2,2,0},{1,2,2,1},{2,2,1,2},{1,2,1,0},
+// S to Z
+{1,1,1,0},{2,0,0,0},{ 1,1,2,0},{1,1,1,2},{1,2,2,0},{2,1,1,2},{2,1,2,2},{2,2,1,1 },{3,0,0,0},{4,0,0,0}
+};
+
+void setup()
+{
+  
+  Serial.begin(9600);
+  
+}
+
+void loop()
+{
+  if(Serial.available() > 0 )
+  {
+  int input=Serial.read();
+ 
+  input=input-65;
+
+  for(int i=0;i<4;i++)
+  {
+    if(letter[input][i]==1)
+    {morse.dot();
+    Serial.println('*');}
+    else if(letter[input][i]==2)
+    {morse.dash();
+    Serial.println('_');}
+    else if(letter[input][i]==3)
+    {morse.c_space();
+    Serial.println(' ');}
+    else if(letter[input][i]==4)
+    {morse.w_space();
+    Serial.println('\n');}
+  }
+  
+  delay(3000);
+  Serial.println('@');
+  }
+
+}
