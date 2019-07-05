@@ -1,6 +1,6 @@
 # learning
 
-## 包含5个文件夹：
+## 包含6个文件夹：
 
 1. learn_arduion-master-master/morse: （初始版本 不完整）
 
